@@ -1,8 +1,11 @@
 *{
     margin: 0;
     padding: 0;
+   
 }
-
+html{
+    scroll-behavior: smooth;
+}
 body{
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -64,7 +67,7 @@ a{
         text-align: left;
         padding-top: 24px;
     }
-
+    
     &__button{
         margin-top: 48px;
         font: inherit;
