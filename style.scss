@@ -9,6 +9,14 @@ body{
     font-style: normal;
 }
 
+button{
+    transition: all 0.5s;
+}
+
+a{
+    text-decoration: none;
+}
+
 .center{
     padding-left: calc(50% - 600px);
     padding-right: calc(50% - 600px);
@@ -20,6 +28,7 @@ body{
         position: absolute;
         top: -333px;
         right: -488px;
+        z-index: 1;
     }
     &__star-smol-right{
         position: absolute;
@@ -35,6 +44,8 @@ body{
 .welcome{
     padding-top: 196px;
     padding-bottom: 156px;
+    position: relative;
+    z-index: 2;
 
     &__title{
         width: 768px;
@@ -74,6 +85,120 @@ body{
         color:  rgb(32, 32, 39);
         }
     }
+}
+
+.about{
+    background: rgb(32, 32, 39);
+   
 
 
+}
+
+.about-info{
+
+    &__title{
+        color: rgb(255, 255, 255);
+        font-family: Montserrat;
+        font-size: 64px;
+        font-weight: 700;
+        line-height: 78px;
+        letter-spacing: 0px;
+        text-align: left;
+        padding-bottom: 24px;
+        padding-top: 94px;
+    }
+
+    &__text{
+        color: rgb(255, 255, 255);
+        font-family: Montserrat;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 32px;
+        letter-spacing: 0px;
+        text-align: left;
+        padding-bottom: 72px;
+    }
+}
+
+.about-game{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 32px;
+    position: relative;
+
+    &__star-big{
+        position: absolute;
+        top: -252px;
+        right: -229px;
+        z-index: 1;
+    }
+
+    &__star-smol{
+        position: absolute;
+        top: 407px;
+        left: -100px;
+       
+    }
+}
+
+.card-bottom{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    align-items: flex-end;
+}
+.card{
+    max-width: 378px;
+    transition: 0.5s;
+    position: relative;
+    z-index: 2;
+  
+    &:hover{
+        transform: scale(1.10);
+        transition: 0.5s;
+    }
+
+    &__link{
+        background-color: #FFFFFF;
+    }
+
+    &__img{
+        background-color: #FFFFFF;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        width: 378px;
+    }
+
+    &__info{
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        background-color: #FFFFFF;
+        padding-left: 32px;
+        padding-top: 32px;
+        padding-bottom: 36px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+    }
+
+    &__number{
+        width: 108px;
+        height: 28px;
+        border-radius: 52.58px;
+        background: #F7F7F7;
+        color: rgb(32, 32, 39);
+        font-size: 16px;
+        font-weight: 500;
+        text-align: center;
+        padding-top: 8px;
+    }
+
+    &__name{
+        color: rgb(32, 32, 39);
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 39px;
+        
+    }
 }
