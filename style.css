@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -45,6 +46,15 @@ a {
   top: 69px;
   left: 63px;
 }
+.top__star-big-mobile {
+  display: none;
+}
+.top__star-smol-left-mobile {
+  display: none;
+}
+.top__star-smol-right-mobile {
+  display: none;
+}
 
 .welcome {
   padding-top: 196px;
@@ -60,6 +70,9 @@ a {
   line-height: 78px;
   text-align: left;
 }
+.welcome__title-mobile {
+  display: none;
+}
 .welcome__text {
   color: rgb(32, 32, 39);
   font-size: 24px;
@@ -67,6 +80,9 @@ a {
   line-height: 32px;
   text-align: left;
   padding-top: 24px;
+}
+.welcome__text-mobile {
+  display: none;
 }
 .welcome__button {
   margin-top: 48px;
@@ -186,4 +202,95 @@ a {
   font-size: 32px;
   font-weight: 700;
   line-height: 39px;
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .center {
+    padding-left: calc(50% - 171.5px);
+    padding-right: calc(50% - 171.5px);
+  }
+  .top {
+    height: 650px;
+  }
+  .top__star-big {
+    display: none;
+  }
+  .top__star-smol-right {
+    display: none;
+  }
+  .top__star-smol-left {
+    display: none;
+  }
+  .top__star-big-mobile {
+    display: block;
+    position: absolute;
+    top: -81px;
+    right: -86px;
+  }
+  .top__star-smol-left-mobile {
+    display: block;
+    position: absolute;
+    top: 64px;
+    left: 37px;
+  }
+  .top__star-smol-right-mobile {
+    display: block;
+    position: absolute;
+    top: 557px;
+    right: 34px;
+  }
+  .welcome {
+    padding-top: 146px;
+    padding-bottom: 132px;
+    width: 343px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .welcome__title {
+    display: none;
+  }
+  .welcome__title-mobile {
+    display: block;
+    color: rgb(32, 32, 39);
+    font-family: Montserrat;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 49px;
+    letter-spacing: 0px;
+    text-align: center;
+  }
+  .welcome__text {
+    display: none;
+  }
+  .welcome__text-mobile {
+    display: block;
+    color: rgb(32, 32, 39);
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: center;
+    padding-top: 24px;
+  }
+  .welcome__button {
+    box-sizing: border-box;
+    border: 1px solid rgb(32, 32, 39);
+    border-radius: 60px;
+    background: rgb(32, 32, 39);
+    width: 285px;
+    height: 55px;
+    color: rgb(255, 255, 255);
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 141.69%;
+    letter-spacing: 0%;
+    text-align: center;
+    margin-top: 36px;
+  }
+  .about {
+    display: none;
+  }
 }/*# sourceMappingURL=style.css.map */

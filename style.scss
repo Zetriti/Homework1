@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
    
 }
 html{
@@ -31,7 +32,7 @@ a{
         position: absolute;
         top: -333px;
         right: -488px;
-        z-index: 1;
+        z-index: 1;    
     }
     &__star-smol-right{
         position: absolute;
@@ -43,6 +44,16 @@ a{
         top: 69px;
         left: 63px;
     }
+    &__star-big-mobile{
+        display: none;
+    }
+    &__star-smol-left-mobile{
+        display: none;
+    }
+    &__star-smol-right-mobile{
+        display: none;
+    }
+
 }
 .welcome{
     padding-top: 196px;
@@ -57,7 +68,12 @@ a{
         font-weight: 700;
         line-height: 78px;
         text-align: left;
+
+        &-mobile{
+            display: none;
+        }
     }
+    
 
     &__text{
         color: rgb(32, 32, 39);
@@ -66,6 +82,10 @@ a{
         line-height: 32px;
         text-align: left;
         padding-top: 24px;
+
+        &-mobile{
+            display: none;
+        }
     }
     
     &__button{
@@ -92,9 +112,6 @@ a{
 
 .about{
     background: rgb(32, 32, 39);
-   
-
-
 }
 
 .about-info{
@@ -204,4 +221,106 @@ a{
         line-height: 39px;
         
     }
+}
+
+@media (min-width: 375px) and (max-width: 767px){
+
+    .center{
+        padding-left: calc(50% - 171.5px);
+        padding-right: calc(50% - 171.5px);
+    }
+    .top{
+        height: 650px;
+        &__star-big{
+            display: none;
+        }
+        &__star-smol-right{
+            display: none;
+        }
+        &__star-smol-left{
+            display: none;
+        }
+        &__star-big-mobile{
+            display: block;
+            position: absolute;
+            top: -81px;
+            right: -86px;
+        }
+        &__star-smol-left-mobile{
+            display: block;
+            position: absolute;
+            top: 64px;
+            left: 37px;
+        }
+        &__star-smol-right-mobile{
+            display: block;
+            position: absolute;
+            top: 557px;
+            right: 34px;
+        }
+    }
+
+    .welcome{
+        padding-top: 146px;
+        padding-bottom: 132px;
+        width: 343px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+
+        &__title{
+            display: none;
+
+            &-mobile{
+                display: block;
+                color: rgb(32, 32, 39);
+                font-family: Montserrat;
+                font-size: 40px;
+                font-weight: 700;
+                line-height: 49px;
+                letter-spacing: 0px;
+                text-align: center;
+                
+            }
+        }
+
+        &__text{
+            display: none;
+        
+            &-mobile{
+                display: block;
+                color: rgb(32, 32, 39);
+                font-family: Montserrat;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 20px;
+                letter-spacing: 0px;
+                text-align: center;
+                padding-top: 24px;
+                
+            }
+        }
+        &__button{
+            box-sizing: border-box;
+            border: 1px solid rgb(32, 32, 39);
+            border-radius: 60px;
+            background: rgb(32, 32, 39);
+            width: 285px;
+            height: 55px;
+            color: rgb(255, 255, 255);
+            font-family: Montserrat;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 141.69%;
+            letter-spacing: 0%;
+            text-align: center;
+            margin-top: 36px;
+        }
+    }
+
+    .about{
+        display: none;
+    }
+
 }
