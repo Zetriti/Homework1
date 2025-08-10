@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+     <script src="script.js"></script>
     <title>Homework1</title>
 </head>
 <body>
@@ -131,13 +131,19 @@
         </section>
         <section class="mini-game center">
             <h2 class="mini-game__title">Мини-игры</h2>
+            <div id="gameModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div id="game-container"></div>
+                </div>
+            </div>
             <div class="content-game">
                 <article id="game1" class="game-card">
                     <img class="game-card__img-mobile" src="img/game1-mobile.png" alt="card1-mobile">
                     <div class="game-card__info-left">
                         <h3 class="game-card__name">Угадай число</h3>
                         <p class="game-card__text">Попробуй угадать случайное <br>число от 1 до 100.</p>
-                        <button class="game-card__button">Играть!</button>
+                        <button data-game="guess-number" class="game-card__button">Играть!</button>
                     </div>
                     <img class="game-card__img-right" src="img/game1.png" alt="card1">
                 </article>
