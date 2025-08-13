@@ -235,7 +235,14 @@ a {
 
 .GameTitle {
   padding-top: 10px;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
+}
+
+.task {
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
 
 .check {
@@ -263,6 +270,8 @@ a {
   border-radius: 60px;
   width: 160px;
   height: 35px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .result {
