@@ -1,8 +1,4 @@
 function squareArr(arr) {
-  const result = [];
-  for (let i = 0; i < arr.length; i++) {
-    result.push(arr[i] * arr[i]);
-  }
-  return result;
+  return arr.map(num => num * num);
 }
-console.log(squareArr([6, 10, 15]));
+console.log(squareArr([6, 10, 15, 2, 4]));
