@@ -16,7 +16,6 @@ function filter(newArr, word) {
 }
 const result = filter(arr, word);
 console.log(result);
-console.log(str.toUpperCase());
 
 //Задание 3
 console.log("Задание 3");
@@ -69,38 +68,25 @@ console.log(new Date());
 //Задание 9
 console.log("Задание 9");
 const currentDate = new Date();
-let days73 = 73 * 24 * 60 * 60 * 1000;
-let searchDate = currentDate - days73;
-let daysAgo73 = new Date(searchDate); 
-console.log(daysAgo73); 
+const futureDate = new Date(currentDate)
+const currentDay = futureDate.getDate();
+futureDate.setDate(currentDay + 73);
+console.log('Дата через 73 дня:');
+console.log(futureDate.toLocaleDateString());
 
 //Задание 10
 console.log("Задание 10");
-const myDate = new Date();
-const days = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг",
-"Пятница", "Суббота"];
-const months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
-"Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
-let fullDate = "Дата: " + myDate.getDate() + 
-// getDate возвращает число
-
-" " + months[myDate.getMonth()] + 
-// getMonth возвращает номер месяца, 
-// который мы можем использовать в качестве индекса для массива months
-
-" " + myDate.getFullYear() + 
-// getFullYear возвращает год
-
-" — это " + days[myDate.getDay()]; 
-// getDay возвращает номер дня недели, 
-// который мы используем в качестве индекса для массива days
-
-console.log(fullDate); 
-
-let fullTime = "Время: " + myDate.getHours() + ":" +  myDate.getMinutes() + ":" +  myDate.getSeconds();
-
-console.log(fullTime); 
-
+function ruDate() {
+    const myDate = new Date();
+    const days = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг",
+    "Пятница", "Суббота"];
+    const months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
+    "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+    let fullDate = "Дата: " + myDate.getDate() + " " + months[myDate.getMonth()] + " " + myDate.getFullYear() + " — это " + days[myDate.getDay()]; 
+    let fullTime = "Время: " + myDate.getHours() + ":" +  myDate.getMinutes() + ":" +  myDate.getSeconds();
+    return fullDate + '\n' + fullTime;
+}
+console.log(ruDate());
 
 
 

@@ -143,94 +143,63 @@ const gameRegistry = {
         line-height: 32px;
         letter-spacing: 0px;" 
       >
-      Перед вами текст. Введите его перевернутую версию:</p>
-      
-      <div id="original-text" 
-           style="font-size: 24px; 
-                  margin: 20px 0; 
-                  padding: 15px; 
-                  background-color: transparent;
-                  border-radius: 8px;
-                  font-weight: bold;">
-      </div>
-      
+      Введите любой текст, и мы перевернём его!</p>
       <div style="margin: 20px 0;">
-        <input 
-          type="text" 
-          id="inputText" 
-          placeholder="Введите перевернутый текст здесь..." 
+      <textarea 
+          id="reverse-text-input" 
+          placeholder="Введите текст здесь..." 
           style="width: 100%; 
           border-radius: 60px;
           padding: 12px; 
           font-size: 18px;"
-        >
+      ></textarea>
       </div>
-      
-      <button class="check">Проверить</button>
-      
-      <div class="result" 
-           style="margin-top: 20px; 
-                  padding: 15px; 
-                  border-radius: 8px; 
-                  font-size: 20px; 
-                  text-align: center;">
+      <button id="reverse-text-btn" style= "border-radius: 60px;
+              background: rgb(32, 32, 39);
+              color: rgb(255, 255, 255);
+              font-family: Montserrat;
+              font-size: 24px;
+              font-weight: 600;
+              line-height: 141.69%;
+              letter-spacing: 0%;
+              text-align: center;
+              width: 247px;
+              height: 66px;
+              margin-top: 20px;"
+              >Перевернуть текст</button>
+      <div id="result-container" style= "margin-top: 30px; padding: 20px; background: #f0f0f0; border-radius: 8px;">
+          <h3>Результат:</h3>
+          <div id="reversed-text" style= "font-size: 20px; word-break: break-all;"></div>
       </div>
     </div>
-  `,
+    `,
 
   setup: (container) => {
-    function generateRandomText() {
-      const texts = [
-        "Hello World!",
-        "Привет, мир!",
-        "12345",
-        "SkyPro",
-        "Переверни меня",
-        "А роза упала на лапу Азора",
-        "Лена Головач",
-        "У дуба буду",
-        "Кулинар, храни лук",
-        "Умер, и мир ему"
-      ];
-      return texts[Math.floor(Math.random() * texts.length)];
-    }
-    
-    function reverseString(str) {
-      return str.split('').reverse().join('');
-    }
-    
-    const originalText = container.querySelector('#original-text');
-    const userInput = container.querySelector('#inputText');
-    const checkBtn = container.querySelector('.check');
-    const resultDiv = container.querySelector('.result');
-    
-    const original = generateRandomText();
-    originalText.textContent = original;
-    
-    checkBtn.addEventListener('click', () => {
-      const userAnswer = userInput.value;
-      const correctAnswer = reverseString(originalText.textContent);
+      const inputText = container.querySelector('#reverse-text-input');
+      const reverseBtn = container.querySelector('#reverse-text-btn');
+      const resultContainer = container.querySelector('#result-container');
+      const reversedText = container.querySelector('#reversed-text');
+
+      resultContainer.style.display = 'none';
       
-      if (userAnswer === correctAnswer) {
-        resultDiv.textContent = "Вы правильно перевернули текст!";
-        resultDiv.style.backgroundColor = "#d4edda";
-        resultDiv.style.color = "#155724";
-        
-        setTimeout(() => {
-          const newText = generateRandomText();
-          originalText.textContent = newText;
-          userInput.value = "";
-          resultDiv.textContent = "";
-          resultDiv.style.backgroundColor = "";
-          userInput.focus();
-        }, 1500);
-      } else {
-        resultDiv.textContent = `Неверно! Правильный ответ: "${correctAnswer}"`;
-        resultDiv.style.backgroundColor = "#f8d7da";
-        resultDiv.style.color = "#721c24";
-        userInput.select();
+      function reverseString(str) {
+        return str.split('').reverse().join('');
       }
-    });
+    
+      reverseBtn.addEventListener('click', () => {
+        const text = inputText.value.trim();
+        
+        if (!text) {
+          alert('Пожалуйста, введите текст!');
+          inputText.focus();
+          return;
+        }
+    
+        const reversed = reverseString(text);
+        
+        reversedText.textContent = reversed;
+        resultContainer.style.display = 'block';
+      });
       
       inputText.addEventListener('keyup', (e) => {
         if (e.key === 'Enter') {
@@ -243,14 +212,42 @@ const gameRegistry = {
   },
 
   'quiz': {
-    html: `
+        html: `
       <div class="quiz-game">
         <h2 class="GameTitle">Викторина</h2>
-        <div id="quiz-container"></div>
+        <p style="color: rgb(32, 32, 39);
+          font-family: Montserrat;
+          font-size: 24px;
+          font-weight: 400;
+          line-height: 32px;
+          letter-spacing: 0px;
+          margin-bottom: 30px;">
+          Проверьте свои знания! Ответьте на все вопросы.
+        </p>
+        <div id="quiz-container">
+          <button id="start-quiz-btn"
+            style="border-radius: 60px;
+              background: rgb(32, 32, 39);
+              color: rgb(255, 255, 255);
+              font-family: Montserrat;
+              font-size: 24px;
+              font-weight: 600;
+              line-height: 141.69%;
+              letter-spacing: 0%;
+              text-align: center;
+              width: 247px;
+              height: 66px;
+              margin-top: 20px;
+              cursor: pointer;">
+            Начать викторину
+          </button>
+        </div>
         <div id="quiz-result" 
           style="display: none; 
           padding: 20px; 
-          border-radius: 8px;"
+          border-radius: 8px;
+          margin-top: 30px;
+          background: #f0f0f0;"
         >
           <h3 class="GameTitle">Результат:</h3>
           <p id="score-message" style="font-size: 20px; font-weight: bold;"></p>
@@ -268,10 +265,12 @@ const gameRegistry = {
               height: 66px;
               margin-top: 20px;"
           >
-            Пройти еще раз</button>
+            Пройти еще раз
+          </button>
         </div>
       </div>
     `,
+
     setup: function(container) { 
       const quiz = [
         {
@@ -295,74 +294,33 @@ const gameRegistry = {
       const quizResult = container.querySelector('#quiz-result');
       const scoreMessage = container.querySelector('#score-message');
       const restartButton = container.querySelector('#restart-quiz');
+      const startButton = container.querySelector('#start-quiz-btn');
 
-      let currentQuestion = 0;
       let score = 0;
-      let userAnswers = [];
 
-      // Функция для отображения вопроса
-      function showQuestion(questionIndex) {
-        const questionObj = quiz[questionIndex];
-        quizContainer.innerHTML = `
-          <div class="question">
-            <h3>Вопрос ${questionIndex + 1} из ${quiz.length}:</h3>
-            <p style="font-size: 20px; margin: 15px 0;">${questionObj.question}</p>
-            <div class="options">
-              ${questionObj.options.map((option, index) => `
-                <label style="display: block; margin: 10px 0; cursor: pointer;">
-                  <input type="radio" name="answer" value="${index}" style="margin-right: 10px;">
-                  ${option}
-                </label>
-              `).join('')}
-            </div>
-            <button id="next-question"
-              style="border-radius: 60px;
-                background: rgb(32, 32, 39);
-                color: rgb(255, 255, 255);
-                font-family: Montserrat;
-                font-size: 24px;
-                font-weight: 600;
-                line-height: 141.69%;
-                letter-spacing: 0%;
-                text-align: center;
-                width: 300px;
-                height: 66px;
-                margin-top: 20px;"
-            >
-              ${questionIndex < quiz.length - 1 ? 'Следующий вопрос' : 'Завершить викторину'}
-            </button>
-          </div>
-        `;
-
-        const nextButton = container.querySelector('#next-question');
-        nextButton.addEventListener('click', () => {
-          const selectedOption = container.querySelector('input[name="answer"]:checked');
-          
-          if (!selectedOption) {
-            alert('Пожалуйста, выберите ответ!');
-            return;
-          }
-          
-          userAnswers[questionIndex] = parseInt(selectedOption.value);
-          
-          if (questionIndex < quiz.length - 1) {
-            showQuestion(questionIndex + 1);
-          } else {
-            calculateScore();
-          }
-        });
-      }
-
-      function calculateScore() {
+      function startQuiz() {
         score = 0;
+        
         for (let i = 0; i < quiz.length; i++) {
-          if (userAnswers[i] === quiz[i].correctAnswer) {
+          const question = quiz[i];
+          
+          let questionText = question.question + "\n\n";
+          question.options.forEach(option => {
+            questionText += option + "\n";
+          });
+          questionText += "\nВведите номер правильного ответа:";
+          
+          const userAnswer = prompt(questionText);
+          
+          if (userAnswer && parseInt(userAnswer) === question.correctAnswer + 1) {
             score++;
           }
         }
         
-        quizContainer.style.display = 'none';
-        quizResult.style.display = 'block';
+        showResult();
+      }
+
+      function showResult() {
         scoreMessage.textContent = `Вы ответили правильно на ${score} из ${quiz.length} вопросов!`;
         
         if (score === quiz.length) {
@@ -375,18 +333,16 @@ const gameRegistry = {
           scoreMessage.innerHTML += '<br> Попробуйте еще раз!';
           scoreMessage.style.color = 'red';
         }
+        
+        quizResult.style.display = 'block';
       }
 
+      startButton.addEventListener('click', startQuiz);
+      
       restartButton.addEventListener('click', () => {
-        currentQuestion = 0;
-        score = 0;
-        userAnswers = [];
-        quizContainer.style.display = 'block';
         quizResult.style.display = 'none';
-        showQuestion(0);
+        startQuiz();
       });
-
-      showQuestion(0);
     }
   },
 
@@ -396,6 +352,10 @@ document.addEventListener('DOMContentLoaded', () => {
 const modal = document.getElementById('gameModal');
 const gameContainer = document.getElementById('game-container');
 
+  if (!modal || !gameContainer) {
+    console.error('Не удалось найти модальное окно или контейнер игры');
+    return;
+  }
 modal.querySelector('.close').addEventListener('click', () => {
     modal.style.display = 'none';
 });
