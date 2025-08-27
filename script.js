@@ -346,6 +346,127 @@ const gameRegistry = {
     }
   },
 
+  'rock-paper-scissors': {
+  html: `
+    <div class="rps-game">
+      <div>
+        <h2 class="GameTitle">Камень, ножницы, бумага</h2>
+        <p style="color: rgb(32, 32, 39);
+          font-family: Montserrat;
+          font-size: 24px;
+          font-weight: 400;
+          line-height: 32px;
+          letter-spacing: 0px;
+          margin-bottom: 10px;">
+          Сыграйте против компьютера!
+        </p>
+        <button id="start-rps-btn"
+          style="border-radius: 60px;
+            background: rgb(32, 32, 39);
+            color: rgb(255, 255, 255);
+            font-family: Montserrat;
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 141.69%;
+            letter-spacing: 0%;
+            text-align: center;
+            width: 247px;
+            height: 66px;
+            margin-top: 10px;
+            cursor: pointer;">
+          Сделать выбор
+        </button>
+      </div>
+      <div id="rps-result" 
+        style="display: none; 
+        padding: 20px; 
+        border-radius: 8px;
+        margin-top: 30px;
+        background: #f0f0f0;"
+      >
+        <h3 class="GameTitle">Результат раунда:</h3>
+        <div id="rps-choices" style="font-size: 20px; margin: 15px 0;"></div>
+        <div id="rps-winner" style="font-size: 24px; font-weight: bold;"></div>
+        <button id="play-again-btn"
+          style="border-radius: 60px;
+            background: rgb(32, 32, 39);
+            color: rgb(255, 255, 255);
+            font-family: Montserrat;
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 141.69%;
+            letter-spacing: 0%;
+            text-align: center;
+            width: 247px;
+            height: 66px;
+            margin-top: 10px;"
+        >
+          Играть снова
+        </button>
+      </div>
+    </div>
+  `,
+  setup: function(container) {
+    const rpsResult = container.querySelector('#rps-result');
+    const rpsChoices = container.querySelector('#rps-choices');
+    const rpsWinner = container.querySelector('#rps-winner');
+    const startButton = container.querySelector('#start-rps-btn');
+    const playAgainButton = container.querySelector('#play-again-btn');
+
+    const choices = ["камень", "ножницы", "бумага"];
+    
+    function getComputerChoice() {
+      const randomIndex = Math.floor(Math.random() * 3);
+      return choices[randomIndex];
+    }
+    
+    function determineWinner(userChoice, computerChoice) {
+      if (userChoice === computerChoice) {
+        return "Ничья!";
+      }
+      
+      if (
+        (userChoice === "камень" && computerChoice === "ножницы") ||
+        (userChoice === "ножницы" && computerChoice === "бумага") ||
+        (userChoice === "бумага" && computerChoice === "камень")
+      ) {
+        return "Вы победили!";
+      }
+      
+      return "Компьютер победил!";
+    }
+    
+    function playGame() {
+      const userChoice = prompt("Выберите: камень, ножницы или бумага?");
+      
+      if (!userChoice || !choices.includes(userChoice.toLowerCase())) {
+        alert("Пожалуйста, выберите один из вариантов: камень, ножницы или бумага");
+        return;
+      }
+      
+      const computerChoice = getComputerChoice();
+      
+      const result = determineWinner(userChoice.toLowerCase(), computerChoice);
+      
+      rpsChoices.innerHTML = `
+        <p>Ваш выбор: <strong>${userChoice}</strong></p>
+        <p>Выбор компьютера: <strong>${computerChoice}</strong></p>
+      `;
+      
+      rpsWinner.textContent = result;
+    
+      rpsResult.style.display = 'block';
+    }
+    
+    startButton.addEventListener('click', playGame);
+    
+    playAgainButton.addEventListener('click', () => {
+      rpsResult.style.display = 'none';
+      playGame();
+    });
+  }
+},
+
 };
 
 document.addEventListener('DOMContentLoaded', () => {
