@@ -1,0 +1,48 @@
+.title{
+    margin-bottom: 30px;
+    transition: all 0.5s ease;
+    width: 768px;
+    color: rgb(32, 32, 39);
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 78px;
+    text-align: left;
+}
+
+.hidden{
+    opacity: 0;
+    transform: scale(0.9);
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.button{
+    font: inherit;
+    box-sizing: border-box;
+    border: 1px solid rgb(32, 32, 39);
+    border-radius: 60px;
+    background:  rgb(32, 32, 39);
+    width: 247px;
+    height: 66px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 141.69%;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.text{
+    color: rgb(32, 32, 39);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: left;
+    padding-top: 24px;
+}
+.conteiner{
+    border-bottom: 1px solid rgb(32, 32, 39); ;
+}
