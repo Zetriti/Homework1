@@ -467,6 +467,107 @@ const gameRegistry = {
   }
 },
 
+'color-generator': {
+  html: `
+    <div class="color-game" style="max-width: 100%; overflow: hidden; text-align: center;">
+      <h2 class="GameTitle" style="font-size: calc(1.5rem + 1vw);">Генератор случайных цветов</h2>
+      <p style="color: rgb(32, 32, 39);
+        font-family: Montserrat;
+        font-size: calc(1rem + 0.5vw);
+        font-weight: 400;
+        line-height: 1.4;
+        letter-spacing: 0px;
+        margin-bottom: 20px;">
+        Нажмите на кнопку, чтобы изменить цвет фона страницы
+      </p>
+      <button id="generate-color-btn"
+        style="border-radius: 60px;
+          background: rgb(32, 32, 39);
+          color: rgb(255, 255, 255);
+          font-family: Montserrat;
+          font-size: calc(1rem + 0.5vw);
+          font-weight: 600;
+          line-height: 141.69%;
+          letter-spacing: 0%;
+          text-align: center;
+          width: 80%;
+          max-width: 247px;
+          height: 66px;
+          margin-top: 20px;
+          cursor: pointer;">
+        Сменить цвет
+      </button>
+      <button id="original-color-btn"
+        style="border-radius: 60px;
+          background: rgb(32, 32, 39);
+          color: rgb(255, 255, 255);
+          font-family: Montserrat;
+          font-size: calc(1rem + 0.5vw);
+          font-weight: 600;
+          line-height: 141.69%;
+          letter-spacing: 0%;
+          text-align: center;
+          width: 80%;
+          max-width: 247px;
+          height: 66px;
+          margin-top: 20px;
+          cursor: pointer;">
+        Стандартный цвет
+      </button>
+      <div id="color-info" 
+        style="margin-top: 30px; 
+        padding: 20px; 
+        border-radius: 8px;
+        background: #f0f0f0;
+        display: none;"
+      >
+        <h3 style="font-size: calc(1.2rem + 0.5vw); margin-bottom: 15px;">Текущий цвет фона:</h3>
+        <div id="current-color" style="font-size: calc(1rem + 0.3vw); font-weight: bold;"></div>
+        <div id="color-box" style="width: 100px; height: 100px; margin: 15px auto; border: 2px solid #333; border-radius: 8px;"></div>
+      </div>
+    </div>
+  `,
+  setup: function(container) {
+    const generateBtn = container.querySelector('#generate-color-btn');
+    const originalBtn = container.querySelector('#original-color-btn');
+    const colorInfo = container.querySelector('#color-info');
+    const currentColor = container.querySelector('#current-color');
+    const colorBox = container.querySelector('#color-box');
+    const miniGameSection = document.querySelector('section.mini-game');
+    const aboutGameSection = document.querySelector('section.about');
+    const originalColor = 'rgb(32, 32, 39)';
+    
+    function getRandomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    originalBtn.addEventListener('click', () => {
+      miniGameSection.style.backgroundColor = originalColor;
+      aboutGameSection.style.backgroundColor = originalColor;
+      
+      currentColor.textContent = originalColor;
+      colorBox.style.backgroundColor = originalColor;
+      colorInfo.style.display = 'block';
+    });
+
+    generateBtn.addEventListener('click', () => {
+      const randomColor = getRandomColor();
+    
+      miniGameSection.style.backgroundColor = randomColor;
+      aboutGameSection.style.backgroundColor = randomColor;
+      
+      currentColor.textContent = randomColor;
+      colorBox.style.backgroundColor = randomColor;
+      colorInfo.style.display = 'block';
+    });
+  }
+}
+
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -497,4 +598,19 @@ window.addEventListener('click', (e) => {
     if (e.target === modal) modal.style.display = 'none';
 });
 
+});
+
+//Линия с анимацией прокрутки
+document.addEventListener('DOMContentLoaded', function() {
+    const scroller = document.querySelector('.line__content');
+    const items = scroller.innerHTML;
+    scroller.innerHTML += items;
+    
+    scroller.addEventListener('mouseenter', function() {
+        scroller.classList.add('paused');
+    });
+    
+    scroller.addEventListener('mouseleave', function() {
+        scroller.classList.remove('paused');
+    });
 });
